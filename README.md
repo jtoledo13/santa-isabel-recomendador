@@ -159,7 +159,8 @@ Ingresando la palabra **"cepillo"** en el buscador, se obtienen recomendaciones 
 
 Ingresando la palabra **"Shampoo"** en el buscador, se obtienen recomendaciones como:
 
-<img width="746" height="907" alt="image" src="https://github.com/user-attachments/assets/159f6ad5-6849-4f9b-bb6a-4a7786858299" />
+<img width="881" height="964" alt="image" src="https://github.com/user-attachments/assets/52a7d8b1-9993-4351-ba30-517984ccb97f" />
+
 
 
 ---
