@@ -9,6 +9,10 @@
 
 Este proyecto tiene como objetivo analizar un conjunto de datos de productos del supermercado **Santa Isabel (Chile)** y construir un sistema recomendador basado en similitud de texto para sugerir productos similares según el nombre ingresado por el usuario.
 
+Este proyecto tiene un enfoque **demostrativo y educativo**. Su objetivo principal es mostrar la aplicación práctica de técnicas de Inteligencia Artificial y Machine Learning en un contexto de análisis de datos y sistemas de recomendación. Se ha utilizado un conjunto de datos de precios de productos para ilustrar cómo se pueden construir modelos predictivos y herramientas de análisis en un entorno real.
+
+Los datos de precios y productos utilizados en este proyecto son de ejemplo y fueron recolectados en una fecha específica (2022-07-16). Este trabajo **no está oficialmente vinculado con Santa Isabel** y debe ser considerado únicamente con fines de demostración técnica. Los resultados, precios y recomendaciones aquí presentados no reflejan la información actual o real de la cadena de supermercados.
+
 El proyecto consta de dos partes principales:
 
 
@@ -50,7 +54,14 @@ El dataset utilizado fue obtenido desde Kaggle:
 ### Distribución de Precios con Oferta
 
 - Se graficó un histograma general del precio con oferta (`low_price`) entre 0 y 6000 CLP para visualizar la distribución general.
+
+<img width="1048" height="561" alt="image" src="https://github.com/user-attachments/assets/cb619486-dfa1-47f8-8c05-39fb358e93a7" />
+
+
 - Se hizo un zoom en precios entre 2000 y 4000 CLP, rango con alta concentración de productos.
+
+<img width="1031" height="556" alt="image" src="https://github.com/user-attachments/assets/9773fbfa-d721-4cc3-9457-51e9bc89393a" />
+
 
 ### Productos Más Baratos
 
@@ -62,10 +73,11 @@ El dataset utilizado fue obtenido desde Kaggle:
 | Ajo en polvo 15 g    | Cuisine & Co  | 151                     |
 | Merquén 15 g         | Cuisine & Co  | 191                     |
 
-### Categorías Más Frecuentes
 
-- Top 10 subcategorías:  
-  conservas, lacteos, aderezos y salsas, pastas y salsas, aceites sal y condimentos, arroz y legumbres, coctel, congelados, desayuno y dulces, belleza y cuidado personal.
+### Top 10 Subcategorías más frecuentes
+
+<img width="836" height="654" alt="image" src="https://github.com/user-attachments/assets/2920d2f1-a8b9-4533-a818-1a2fe21afb5e" />
+
 
 ### KPIs Clave
 
@@ -88,18 +100,42 @@ Se entrenó un modelo de **Regresión Lineal** para predecir el precio con ofert
 - `high_price` (precio antes de la oferta)  
 - `oferta` (si tiene oferta o no)  
 
-### Resultados del Modelo
+### Interpretación y Resultado
 
-- **R² Score:** 0.89  
-- **RMSE:** 614.29 CLP  
+* **R² Score:** Con un valor de **0.89**, el modelo explica el **89% de la variabilidad** en los precios con oferta. Este resultado sugiere que la regresión lineal es capaz de capturar una porción significativa de la relación entre las variables, lo que indica un ajuste bastante bueno.
 
-Este modelo demuestra un buen ajuste para predecir precios con oferta basándose en las variables mencionadas.
+* **RMSE:** El **Error Cuadrático Medio** (RMSE) es de **614.29 CLP**. Esto significa que, en promedio, las predicciones del modelo se desvían del precio real en aproximadamente **$614,29 pesos chilenos**. Este valor es aceptable para el contexto comercial y el propósito del proyecto.
+
+Con un R² de 0.89, el modelo explica muy bien la variabilidad en los precios con oferta, es decir, puede predecir con bastante precisión cuánto costará un producto cuando tiene descuento, basándose en su precio original y condiciones de oferta.
+
+Sin embargo, este modelo no es indispensable para el análisis ni la recomendación; su objetivo principal es demostrar el uso de técnicas de Machine Learning y cómo pueden aplicarse para entender mejor los datos de precios. En escenarios reales, podrían usarse modelos más complejos o incorporar más variables para mejorar la predicción.
+
+### Alcances y Limitaciones
+
+
+* El modelo tiene fines **demostrativos y didácticos**. Su objetivo es ilustrar la aplicación de técnicas de machine learning en un contexto real de precios y ofertas.
+* **No es un sistema de predicción definitivo.** No está diseñado para la toma de decisiones comerciales automáticas, ya que no considera factores externos clave como la estacionalidad, la competencia del mercado o promociones dinámicas.
+* La base de datos se limita a un solo día (2022-07-16), por lo que el modelo **no captura cambios temporales ni tendencias** a lo largo del tiempo. Esto restringe su capacidad predictiva para otros períodos.
+
+### Mejoras Futuras
+
+1.  **Incorporar datos históricos:** Recolectar datos de múltiples días o períodos para modelar tendencias temporales y estacionalidad.
+2.  **Modelos más complejos:** Explorar modelos de Machine Learning más avanzados, como **Árboles de Decisión, Random Forests o Redes Neuronales**, para capturar relaciones no lineales en los datos.
+3.  **Integrar variables externas:** Añadir variables adicionales como datos de la competencia o el comportamiento de compra de los usuarios para mejorar la robustez y precisión del modelo.
+4.  **Desarrollar un sistema de recomendación:** Crear un recomendador avanzado basado en técnicas de **aprendizaje profundo** o **sistemas híbridos** de filtrado colaborativo y contenido para ofrecer sugerencias de productos más precisas.
+***
 
 ---
 
 ## Aplicación Web - Sistema Recomendador
 
 La aplicación fue desarrollada en **Streamlit** para proporcionar una interfaz sencilla y rápida donde el usuario puede ingresar el nombre de un producto y obtener recomendaciones similares.
+
+El sistema de recomendación utiliza técnicas de **Inteligencia Artificial** del área de **Procesamiento de Lenguaje Natural (NLP)** para sugerir productos similares. Funciona de la siguiente manera:
+
+1.  **TF-IDF**: Se aplica **Term Frequency-Inverse Document Frequency** (`TfidfVectorizer`) a los títulos de los productos para convertirlos en vectores numéricos. Esto permite al modelo entender la importancia de cada palabra.
+2.  **Similitud del Coseno**: Una vez que los títulos son vectores, se usa la **Similitud del Coseno** (`cosine_similarity`) para medir la cercanía entre ellos. Un ángulo más pequeño entre dos vectores indica que sus títulos son más parecidos, y por lo tanto, se consideran productos similares para la recomendación.
+
 
 ### Características
 
@@ -119,13 +155,12 @@ La aplicación fue desarrollada en **Streamlit** para proporcionar una interfaz 
 
 Ingresando la palabra **"cepillo"** en el buscador, se obtienen recomendaciones como:
 
-| Producto                           | Marca    | Precio Normal | Precio con Oferta |
-|----------------------------------|----------|---------------|-------------------|
-| Cepillo dental plus suave 2 un.  | Dento    | $2,690        | $2,690            |
-| Cepillo dental Twister Fresh 2 un.| Colgate | $2,690        | $2,690            |
-| Cepillo dental doble acción 6N 2 un.| Duralón | $2,690       | $2,690            |
-| Cepillo dental doble acción 6M 2 un.| Duralón | $2,690       | $2,690            |
-| Pasta dental Triple Acción menta  | Colgate  | $2,690        | $2,690            |
+<img width="723" height="931" alt="image" src="https://github.com/user-attachments/assets/00d79d6a-05e4-4b08-8508-8951fe881919" />
+
+Ingresando la palabra **"Shampoo"** en el buscador, se obtienen recomendaciones como:
+
+<img width="746" height="907" alt="image" src="https://github.com/user-attachments/assets/159f6ad5-6849-4f9b-bb6a-4a7786858299" />
+
 
 ---
 
@@ -142,11 +177,4 @@ Ingresando la palabra **"cepillo"** en el buscador, se obtienen recomendaciones 
 - matplotlib  
 - seaborn  
 
-### Instalación rápida
 
-Clonar este repositorio y luego instalar dependencias:
-
-```bash
-git clone https://github.com/tu_usuario/tu_repositorio.git
-cd tu_repositorio
-pip install -r requirements.txt
