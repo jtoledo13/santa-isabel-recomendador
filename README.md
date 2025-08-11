@@ -7,7 +7,7 @@
 
 ## Descripción del Proyecto
 
-Este proyecto tiene como objetivo analizar un conjunto de datos de productos del supermercado **Santa Isabel (Chile)** y construir un sistema recomendador basado en similitud de texto para sugerir productos similares según el nombre ingresado por el usuario. **La base de datos es extraida directamente desde kaggle y es de origen público.
+Este proyecto tiene como objetivo analizar un conjunto de datos de productos del supermercado **Santa Isabel (Chile)** y construir un sistema recomendador basado en similitud de texto para sugerir productos similares según el nombre ingresado por el usuario. **La base de datos es extraida directamente desde kaggle y es de origen público.**
 
 Este proyecto tiene un enfoque **demostrativo y educativo**. Su objetivo principal es mostrar la aplicación práctica de técnicas de Inteligencia Artificial y Machine Learning en un contexto de análisis de datos y sistemas de recomendación. Se ha utilizado un conjunto de datos de precios de productos para ilustrar cómo se pueden construir modelos predictivos y herramientas de análisis en un entorno real.
 
